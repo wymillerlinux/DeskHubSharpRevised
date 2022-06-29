@@ -1,22 +1,52 @@
-$HEADER$using Avalonia;
+using System.Collections.ObjectModel;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using DeskHubSharpRevised.BLL;
+using DeskHubSharpRevised.Models;
 
-namespace $NAMESPACE$
+namespace DeskHubSharpRevised;
+
+public partial class SearchWindow : Window
 {
-    public partial class $CLASS$ : Window
+    private Request _request;
+    private ObservableCollection<RepoDetail> _repoDetail;
+    
+    public SearchWindow()
     {
-        public $CLASS$()
-        {
-            InitializeComponent();
+        InitializeComponent();
 #if DEBUG
-            this.AttachDevTools();
+        this.AttachDevTools();
 #endif
-        }
+    }
 
-        private void InitializeComponent()
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
+    
+    private void btn_close_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+
+    private void btn_search_Click(object sender, RoutedEventArgs e)
+    {
+        if (string.IsNullOrEmpty(txtbox_query.Text))
         {
-            AvaloniaXamlLoader.Load(this);
+            var parentWindow = this;
+            ErrorWindow err = new ErrorWindow();
+            err.txtblk_error.Text = "Please enter a username!";
+            err.ShowDialog(parentWindow);
         }
+        else
+        {
+            _request = new Request(txtbox_query.Text);
+            _request.PerformSearchRequest();
+            _request.PerformUserRequest();
+            this.Close();
+        }
+        
     }
 }
