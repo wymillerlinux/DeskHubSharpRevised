@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="DeskHubSharpRevised/App.axaml" value="DeskHubSharpRevised/DeskHubSharpRevised.csproj" />
+        <entry key="DeskHubSharpRevised/MainWindow.axaml" value="DeskHubSharpRevised/DeskHubSharpRevised.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
