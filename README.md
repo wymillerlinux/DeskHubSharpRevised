@@ -4,6 +4,15 @@ Designed and developed by Wyatt J. Miller, 2022
 
 Licensed by the Mozilla Public License version 2
 
+## Table of Contents
+
+- [Building](#building)
+  - [Requirements](#requirements)
+  - [Getting the source code](#getting-the-source-code)
+  - [Deployment](#deployment)
+- [Documentation](#documentation)
+- [Contribution](#contribution)
+
 ## Building
 
 ### Requirements
@@ -24,7 +33,7 @@ Clone using the following command:
 
 If you want to build for development, run:
 
-`dotnet build`
+`dotnet run --project DeskHubSharpRevised/DeskHubSharpRevised.csproj`
 
 If you want to build for production for Linux, run:
 
