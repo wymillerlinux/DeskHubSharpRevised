@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace DeskHubSharpRevised.DAL;
 
-public class JsonDataService
+public class JsonDataService : IDataService
 {
     private string _dataConfig;
 
@@ -66,5 +66,20 @@ public class JsonDataService
     public JsonDataService(string dataFile)
     {
         _dataConfig = dataFile;
+    }
+
+    public void SearchRequest()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UserRequest()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void BranchRequest()
+    {
+        throw new NotImplementedException();
     }
 }

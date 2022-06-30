@@ -8,7 +8,7 @@ using RestSharp;
 
 namespace DeskHubSharpRevised.DAL;
 
-public class ApiDataService
+public class ApiDataService : IDataService
 {
     private string _apiEndpoint;
         private string _query;
@@ -33,23 +33,13 @@ public class ApiDataService
         {
             try
             {
-                var client = new RestClient(_apiEndpoint);
+                RestClient client = new RestClient(_apiEndpoint);
                 RestRequest requestRepo = new RestRequest($"users/{_query}/repos", Method.Get);
 
-                var response = client.Execute(requestRepo);
-                var x = response.Content;
-                var deserialized = JsonConvert.DeserializeObject<ObservableCollection<RepoDetail>>(x);
-
-                if (deserialized.Count == 0)
-                {
-                    throw new Exception();
-                }
-                else
-                {
-                    RequestList.repoDetail = deserialized;
-                }
+                string? response = client.Execute(requestRepo).Content;
+                RequestList.repoDetail = JsonConvert.DeserializeObject<ObservableCollection<RepoDetail>>(response);
             }
-            catch (Exception)
+            catch (NullReferenceException)
             {
                 ErrorWindow err = new ErrorWindow();
                 err.txtblk_error.Text = "We couldn't gather repository data. Please try again";
@@ -64,23 +54,11 @@ public class ApiDataService
         {
             try
             {
-                var client = new RestClient(_apiEndpoint);
-
+                RestClient client = new RestClient(_apiEndpoint);
                 RestRequest requestUser = new RestRequest($"users/{_query}", Method.Get);
 
-                var response = client.Execute(requestUser);
-                string x = response.Content;
-                var deserailized = JsonConvert.DeserializeObject<User>(x);
-
-                if (deserailized == null)
-                {
-                    throw new Exception();
-                }
-                else
-                {
-                    RequestList.userDetail = deserailized;
-                }
-
+                string? response = client.Execute(requestUser).Content;
+                RequestList.userDetail  = JsonConvert.DeserializeObject<User>(response);
             }
             catch (NullReferenceException)
             {
@@ -97,15 +75,11 @@ public class ApiDataService
         {
             try
             {
-                var client = new RestClient(_apiEndpoint);
-
+                RestClient client = new RestClient(_apiEndpoint);
                 RestRequest requestUser = new RestRequest($"/repos/{RequestList.userDetail.login}/{_query}/branches", Method.Get);
 
-                var response = client.Execute(requestUser);
-                string x = response.Content;
-                var deserailized = JsonConvert.DeserializeObject<ObservableCollection<Branch>>(x);
-
-                RequestList.branchDetail = deserailized;
+                string? response = client.Execute(requestUser).Content;
+                RequestList.branchDetail = JsonConvert.DeserializeObject<ObservableCollection<Branch>>(response);
             }
             catch (NullReferenceException)
             {
