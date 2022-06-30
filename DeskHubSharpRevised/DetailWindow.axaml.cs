@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Diagnostics;
 using Avalonia;
 using Avalonia.Controls;
@@ -10,9 +11,21 @@ namespace DeskHubSharpRevised;
 
 public partial class DetailWindow : Window
 {
+    // Private members
+    private readonly RepoDetail _repoDetail;
+    private readonly ComboBox? _cmbbox_branches_items;
+    private TextBlock? _txtblk_language_text;
+    private Label? _lbl_reponame_content;
+    private TextBlock? _txtblk_watchers_text;
+    private TextBlock? _txtblk_stargazers_text;
+    private TextBlock? _txtblk_forks_text;
+    private Request _request;
+    private Owner _owner;
+    
     public DetailWindow()
     {
         InitializeComponent();
+        DataContext = this;
 #if DEBUG
         this.AttachDevTools();
 #endif
@@ -22,10 +35,6 @@ public partial class DetailWindow : Window
     {
         AvaloniaXamlLoader.Load(this);
     }
-    
-    private RepoDetail _repoDetail;
-    private Request _request;
-    private Owner _owner;
 
     public DetailWindow(RepoDetail repoDetail)
     {
@@ -33,26 +42,32 @@ public partial class DetailWindow : Window
 
         _repoDetail = repoDetail;
         _request = new Request(_repoDetail.name);
+        _cmbbox_branches_items = this.Find<ComboBox>("cmbbox_branches");
+        _txtblk_language_text = this.Find<TextBlock>("txtblk_language");
+        _txtblk_watchers_text = this.Find<TextBlock>("txtblk_watchers");
+        _txtblk_stargazers_text = this.Find<TextBlock>("txtblk_stargazers");
+        _txtblk_forks_text = this.Find<TextBlock>("txtblk_forks");
+        _lbl_reponame_content = this.Find<Label>("lbl_reponame");
         RepoInfo info = new RepoInfo();
 
         _request.PerformBranchRequest();
         var stuff = info.GetBranchNameComboBox();
-
-        cmbbox_branches.Items= stuff;
+        
+        _cmbbox_branches_items.Items = stuff;
 
         if (_repoDetail.language != null)
         {
-            txtblk_language.Text = $"This repo is mostly {_repoDetail.language} code.";
+            _txtblk_language_text.Text = $"This repo is mostly {_repoDetail.language} code.";
         }
         else
         {
-            txtblk_language.Text = "This repo doesn't have any code.";
+            _txtblk_language_text.Text = "This repo doesn't have any code.";
         }
 
-        lbl_reponame.Content = _repoDetail.full_name;
-        txtblk_stargazers.Text = $"This repo has {_repoDetail.stargazers_count} stargazers.";
-        txtblk_watchers.Text = $"This repo has {_repoDetail.watchers_count} watchers.";
-        txtblk_forks.Text = $"This repo has {_repoDetail.forks_count} forks.";
+        _lbl_reponame_content.Content = _repoDetail.full_name;
+        _txtblk_stargazers_text.Text = $"This repo has {_repoDetail.stargazers_count} stargazers.";
+        _txtblk_watchers_text.Text = $"This repo has {_repoDetail.watchers_count} watchers.";
+        _txtblk_forks_text.Text = $"This repo has {_repoDetail.forks_count} forks.";
     }
 
     private void btn_close_Click(object sender, RoutedEventArgs e)

@@ -10,12 +10,14 @@ namespace DeskHubSharpRevised;
 
 public partial class SearchWindow : Window
 {
+    public string userResponse { get; set; }
     private Request _request;
     private ObservableCollection<RepoDetail> _repoDetail;
-    
+
     public SearchWindow()
     {
         InitializeComponent();
+        DataContext = this;
 #if DEBUG
         this.AttachDevTools();
 #endif
@@ -33,7 +35,7 @@ public partial class SearchWindow : Window
 
     private void btn_search_Click(object sender, RoutedEventArgs e)
     {
-        if (string.IsNullOrEmpty(txtbox_query.Text))
+        if (string.IsNullOrEmpty(userResponse))
         {
             var parentWindow = this;
             ErrorWindow err = new ErrorWindow();
@@ -42,7 +44,7 @@ public partial class SearchWindow : Window
         }
         else
         {
-            _request = new Request(txtbox_query.Text);
+            _request = new Request(userResponse);
             _request.PerformSearchRequest();
             _request.PerformUserRequest();
             this.Close();

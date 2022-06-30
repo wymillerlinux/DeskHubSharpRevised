@@ -3,8 +3,14 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="DeskHubSharpRevised/AboutWindow.axaml" value="DeskHubSharpRevised/DeskHubSharpRevised.csproj" />
         <entry key="DeskHubSharpRevised/App.axaml" value="DeskHubSharpRevised/DeskHubSharpRevised.csproj" />
+        <entry key="DeskHubSharpRevised/DetailWindow.axaml" value="DeskHubSharpRevised/DeskHubSharpRevised.csproj" />
+        <entry key="DeskHubSharpRevised/ErrorWindow.axaml" value="DeskHubSharpRevised/DeskHubSharpRevised.csproj" />
+        <entry key="DeskHubSharpRevised/FeedbackWindow.axaml" value="DeskHubSharpRevised/DeskHubSharpRevised.csproj" />
+        <entry key="DeskHubSharpRevised/HelpWindow.axaml" value="DeskHubSharpRevised/DeskHubSharpRevised.csproj" />
         <entry key="DeskHubSharpRevised/MainWindow.axaml" value="DeskHubSharpRevised/DeskHubSharpRevised.csproj" />
+        <entry key="DeskHubSharpRevised/SearchWindow.axaml" value="DeskHubSharpRevised/DeskHubSharpRevised.csproj" />
       </map>
     </option>
   </component>

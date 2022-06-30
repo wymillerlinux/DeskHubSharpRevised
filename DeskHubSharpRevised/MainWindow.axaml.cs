@@ -68,6 +68,7 @@ namespace DeskHubSharpRevised
 
         private async void btn_search_Click(object sender, RoutedEventArgs e)
         {
+            this.cmbbox_sort = this.Find<ComboBox>("cmbbox_sort");
             SearchWindow search = new SearchWindow();
             await search.ShowDialog(this);
             _repoDetail = RequestList.repoDetail;
@@ -92,23 +93,18 @@ namespace DeskHubSharpRevised
                 txtblk_email.Text = _user.blog;
                 txtblk_realname.Text = _user.name;
                 txtblk_repocount.Text = $"{_user.login} has {_user.public_repos} public repositories.";
+                _request = new Request();
+                cmbbox_sort.Items = _request.PerformGetSort();
             }
         }
 
         public void ShowErrorMessage(string message)
         {
             ErrorWindow err = new ErrorWindow();
-            try
-            {
-                err.lbl_title.Content = "Oops!";
-                err.txtblk_error.Text = message;
-            }
-            catch (NullReferenceException e)
-            {
-                err.lbl_title.Content = "Oops!";
-                err.txtblk_error.Text = message;
-            }
-
+            err.lbl_title = err.Find<Label>("lbl_title");
+            err.lbl_title.Content = "Did you search a user? Try that first.";
+            err.txtblk_error = err.Find<TextBlock>("txtblk_error");
+            err.txtblk_error.Text = message;
             err.Show();
         }
 
