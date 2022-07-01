@@ -6,12 +6,27 @@ Licensed by the Mozilla Public License version 2
 
 ## Table of Contents
 
+- [Overview](#overview)
 - [Building](#building)
   - [Requirements](#requirements)
   - [Getting the source code](#getting-the-source-code)
   - [Deployment](#deployment)
 - [Documentation](#documentation)
 - [Contribution](#contribution)
+
+## Overview
+
+A cross platform application that shows repository and user data from GitHub, built with Avalonia.
+
+So, I finally done it.
+
+I have built a [project](https://scm.wyattjmiller.com/wymiller/DeskHubSharp) in the past that achieves the same goals as this application (albeit unmaintained), but this project is much, much different. I took the original program, ripped out the WPF bits, and stored all the Avalonia bits where the WPF bits used to be, with a few additions. While this project is going to serve a great portion of what the original project did, there are a few adjustments, and perhaps a few additions. 
+
+I also ripped out the legacy .NET Framework and put .NET 6 in it's place, which brings many [improvements](https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-6).
+
+###### What is Avalonia?
+
+Think WPF but cross platform. Avalonia still runs your favorite declarative language, XAML, but applies a different drawing library, Skia (SkiaSharp). What Skia allows Avalonia to do is draw windows, buttons, and other widgets on not just Windows, but macOS, Linux, Android, and iOS. Even Web Assembly! Learn more [here](http://avaloniaui.net/).
 
 ## Building
 
@@ -45,13 +60,15 @@ If you want to build for production for Windows, run:
 
 ## Documentation
 
-To see the documentation, please run the following command in Powershell/bash:
+To see the developer documentation, please run the following command in Powershell/bash:
 
 `doxygen`
 
 Please note that you have to be in the root of the cloned directory to generate the documentation. Alternatively, you specify the configuration file, `Doxyfile`, using the following command:
 
 `doxygen /path/to/Doxyfile`
+
+Also note that this step is optional. This step only generates documentation, which isn't used in running the program.
 
 ## Contribution
 
