@@ -7,15 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Compile Include="Commit.fs" />
         <Compile Include="Branch.fs" />
         <Compile Include="Email.fs" />
         <Compile Include="License.fs" />
         <Compile Include="Owner.fs" />
-        <Compile Include="RepoDetail.fs" />
         <Compile Include="Search.fs" />
-        <Compile Include="RequestList.fs" />
-        <Compile Include="Sort.fs" />
         <Compile Include="User.fs" />
+        <Compile Include="Sort.fs" />
+        <Compile Include="RepoDetail.fs" />
+        <Compile Include="RequestList.fs" />
         <Content Include="README.md" />
     </ItemGroup>
 
