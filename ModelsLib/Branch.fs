@@ -1,9 +1,8 @@
 ﻿namespace DeskHubSharpRevised.Models
 
 type Branch() =
-    member this.name: string = null
-    member this.commit with get(): obj = null
+        member val name: string = null
+            with get, set
     
-    type Commit() =
-        member this.sha with get(): string = null
-        member this.url with get(): string = null
+        member val commit = new Commit()
+            with get, set
