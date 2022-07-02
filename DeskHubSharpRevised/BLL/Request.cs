@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DeskHubSharpRevised.DAL;
 using DeskHubSharpRevised.Models;
 
@@ -63,8 +64,6 @@ public class Request
 
     public List<string> PerformGetSort()
     {
-        Sort sort = new Sort();
-        var sortTerms = sort.GetSortTerms();
-        return sortTerms;
+        return new Sort().GetSortTerms;
     }
 }

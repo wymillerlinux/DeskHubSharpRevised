@@ -10,7 +10,7 @@ namespace DeskHubSharpRevised.DAL;
 
 public class ApiDataService : IDataService
 {
-    private string _apiEndpoint;
+        private string _apiEndpoint;
         private string _query;
 
         public List<RepoDetail> RepoDetail { get; set; }

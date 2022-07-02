@@ -42,6 +42,7 @@ public partial class DetailWindow : Window
 
         _repoDetail = repoDetail;
         _request = new Request(_repoDetail.name);
+        _owner = new Owner();
         _cmbbox_branches_items = this.Find<ComboBox>("cmbbox_branches");
         _txtblk_language_text = this.Find<TextBlock>("txtblk_language");
         _txtblk_watchers_text = this.Find<TextBlock>("txtblk_watchers");
@@ -86,7 +87,7 @@ public partial class DetailWindow : Window
         else
         {
             _owner = new Owner();
-            string link = "https://github.com/" + _repoDetail.owner.login + "/" + _repoDetail.name + "/archive/" + cmbbox_branches.SelectedItem + ".zip";
+            string link = "https://github.com/" + _owner.login + "/" + _repoDetail.name + "/archive/" + cmbbox_branches.SelectedItem + ".zip";
 
             Process.Start(link);
         }
