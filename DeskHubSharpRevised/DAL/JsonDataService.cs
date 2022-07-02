@@ -24,7 +24,7 @@ public class JsonDataService : IDataService
             {
                 string jsonString = sr.ReadToEnd();
 
-                Search.ItemsItem users = JsonConvert.DeserializeObject<Search.ItemsItem>(_dataConfig);
+                ItemsItem users = JsonConvert.DeserializeObject<ItemsItem>(_dataConfig);
                 //user = users.items;
             }
 

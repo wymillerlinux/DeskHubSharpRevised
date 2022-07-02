@@ -29,4 +29,7 @@
         <PackageReference Include="RestSharp" Version="108.0.1" />
         <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\ModelsLib\ModelsLib.fsproj" />
+    </ItemGroup>
 </Project>
