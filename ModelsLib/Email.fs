@@ -13,4 +13,3 @@ type Email() =
         and set(value: string) = _fromEmail <- value
     member this.Password
         with get() = _password
-        and set(value: string) = _password <- value
