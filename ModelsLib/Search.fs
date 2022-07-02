@@ -7,7 +7,7 @@ type Search() =
     member this.incomplete_results with get(): int = 0
     member this.items with get(): List<obj> = null
     
-    type Owner() =
+    type SearchOwner() =
         member this.login
             with get(): string = null
             and set(value: string) = this.login <- value
