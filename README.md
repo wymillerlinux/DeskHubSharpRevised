@@ -28,6 +28,10 @@ I also ripped out the legacy .NET Framework and put .NET 6 in it's place, which 
 
 Think WPF but cross platform. Avalonia still runs your favorite declarative language, XAML, but applies a different drawing library, Skia (SkiaSharp). What Skia allows Avalonia to do is draw windows, buttons, and other widgets on not just Windows, but macOS, Linux, Android, and iOS. Even Web Assembly! Learn more [here](http://avaloniaui.net/).
 
+###### 🚧👷‍♂️ All developers! Wear your hard hats! 🚧👷‍♂️
+
+This application is still in the porting process. Don't worry though! It's being worked on. Please file an [issue]() if find anything that shouldn't be happening.
+
 ## Building
 
 ### Requirements
@@ -46,6 +50,8 @@ Clone using the following command:
 
 ### Deployment
 
+All build tasks go through the `dotnet` command. 
+
 If you want to build for development, run:
 
 `dotnet run --project DeskHubSharpRevised/DeskHubSharpRevised.csproj`
@@ -57,6 +63,8 @@ If you want to build for production for Linux, run:
 If you want to build for production for Windows, run:
 
 `dotnet publish DeskHubSharpRevised/DeskHubSharpRevised.csproj --configuration Release --framework net6.0 --output publish --self-contained True --runtime win-x64 --verbosity Normal /property:PublishTrimmed=True /property:PublishSingleFile=True /property:IncludeNativeLibrariesForSelfExtract=True /property:DebugType=None /property:DebugSymbols=False`
+
+These tasks are supposed to be replaced with Cake in the near future.
 
 ## Documentation
 
@@ -73,3 +81,5 @@ Also note that this step is optional. This step only generates documentation, wh
 ## Contribution
 
 Issues and pull requests are more than welcome.
+
+I don't have a style guide yet.
